@@ -1,0 +1,290 @@
+<?php
+require_once __DIR__ . '/include/Class.Processing.php';
+$processing = new PROCESSING();
+
+//save tracking params to cookie
+$aff = $processing->get_save_tracking_parameter($processing::$url_aff);
+$cid = $processing->get_save_tracking_parameter($processing::$url_cid);
+$network = $processing->get_save_tracking_parameter($processing::$url_net);
+$sid = $processing->get_save_tracking_parameter($processing::$url_sid);
+//save tracking params to cookie
+
+$product = 'activ8';
+$processing->save_data_to_cookie($processing->COOKIE_PRODUCT, $product);
+
+$main_url = 'https://hyperstech.com/intl/';
+$order_url = $main_url.'order2.php?prod='.$product.'&net='.$network.'&aff='.$aff.'&sid='.$sid.'&cid='.$cid;
+
+$scheme = 'http';
+if(!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])){
+  $scheme = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+}else{
+  $scheme = !empty($_SERVER['HTTPS']) ? "https" : "http";
+}
+$img_to_share = $scheme.'://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/img/content_img_1.jpg';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Page Needs ================================================== -->
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="<?php echo $img_to_share; ?>">
+  <title>ActivV8 Fitness Tracker - Activity Tracker - Performance Tracker</title>
+
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+  <!-- Stylesheet      ================================================== -->
+  <link rel="stylesheet" type="text/css"  href="./css/fontello.css">
+  <link rel="stylesheet" type="text/css"  href="./css/style.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header class="header">
+    <!-- Navigation        ==========================================-->
+    <nav id="tf-menu" class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" target="_blank" href="<?php echo $order_url; ?>"><img class="img-logo" src="./img/logo.png" alt=""></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a target="_blank" href="<?php echo $order_url; ?>">Home</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/contact-us.php?prod=<?php echo $product; ?>">Contact Us</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/policy.php?prod=<?php echo $product; ?>">Privacy Policy</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/term.php?prod=<?php echo $product; ?>">Terms of Business</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="wrapper_top_block">
+      <div class="container">
+        <div class="inner_top_block">
+          <div class="row">
+            <div class="col-md-6 col-sm-7">
+              <div class="top_block">
+                <h1 class="h1"><span class="fw-300">Could a Fitness Tracker Boost You</span><br><span class="fw-600">Life Quality?</span></h1>
+                <div class="advert">
+                  <div class="item_advert"><img class="mr-10" src="./img/img-1.png" alt=""><span class="date">John Lewis</span></div>
+                  <div class="item_advert"><img class="mr-10" src="./img/img-2.png" alt=""><span class="category">Technology</span></div>
+                  <div class="item_advert"><img class="mr-10" src="./img/img-3.png" alt=""><span class="name"><?php echo date('d.m.Y'); ?></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-5">
+              <div class="wrapper_top_img"><a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive top_img" src="./img/top_img.png"></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Home Section      ==========================================-->
+  <div class="wrapper-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 pr-20">
+          <div class="content">
+            <div class="top_icons">
+              <div class="row">
+                <div class="col-md-4">
+                  <a href="javascript:void(0);" class="btn btn-transparent btn-transparent-facebook"><span class="wrapper-demo-icon"><i class="demo-icon icon-facebook"></i></span><span class="social_text">Facebook</span></a>
+                </div>
+                <div class="col-md-4">
+                  <a href="javascript:void(0);" class="btn btn-transparent btn-transparent-twitter"><span class="wrapper-demo-icon"><i class="demo-icon icon-twitter"></i></span><span class="social_text">Twitter</span></a>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-transparent btn-transparent-link" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Link copied!">
+                    <span class="wrapper-demo-icon"><i class="demo-icon icon-link"></i></span><span class="social_text">Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p class="text fw-600">Are you trying to lead a more active lifestyle? Are you concerned that you're not getting enough exercise, or eager to track the improvements your current activity schedule is having on your health and wellbeing?</p>
+            <p class="text">For many people, keeping track of how much exercise they've done, as well as measuring progress, can be a challenge. Without some way of measuring the impact your exercise is having, it's all too easy to end up skipping a workout now and again, or simply forgetting to complete the amount of activity you need for optimal wellbeing. In such circumstances, a fitness tracker can be a great option.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_1.jpg" alt=""></a>
+            <h2 class="h2">Introducing the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8 Fitness Tracker</a></h2>
+            <p class="text">Designed to make your wellness journey easier, the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> activity tracker incorporates a range of features that gather information on your activity levels. Advanced technology and a wealth of data-gathering and interpreting options have been built into an easy-to-wear wristband. Attractive to look at, unisex and stylish, the wristband is also highly practical. Suitable for 24/7 use, whether you want to monitor your sleep, keep track of your exercise or tweak your weight loss routine, this smartwatch has the capacity to meet your requirements. Take a look at why a growing number of people are opting to take control of their fitness with a handy fitness tracker.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_2.jpg" alt=""></a>
+            <h2 class="h2">Track up to 14 different activities</h2>
+            <p class="text">Most people take part in a variety of different activities: from walking or running through to team sports, racket sports or fitness classes, this tracker allows you to gather data on each one. The data is collected through the wristband, with detailed analysis of each exercise available through the VeryfitPro App.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_3.jpg" alt=""></a>
+            <h2 class="h2">Monitor heart rate, calories burned and much more</h2>
+            <p class="text">Far more than simply a step counter, the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> collects all the information you need to make informed decisions about your exercise choices. The wristband collects data on calories burned, heart rate, miles covered, steps taken and sleep. This data not only allows you to track your progress on a daily basis but over time you can also spot longer-term trends. Collecting data regularly enables clear accountability and enables you to make appropriate adjustments to speed up progress towards your fitness goals. The information is presented in a clear, easy-to-understand format that's straight-forward to access and use.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_4.jpg" alt=""></a>
+            <h2 class="h2">Take advantage of the <a target="_blank" href="<?php echo $order_url; ?>">VeryfitPro App</a></h2>
+            <p class="text">Alongside the fitness tracker, you could also benefit from access to the VeryfitPro App. Designed to work with the tracker, information is uploaded on to the App. This allows getting access to longer-term trends to see how statistics have changed over time. The App is available in both Android and Apple formats and is included for FREE as part of the fitness tracker package.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_5.jpg" alt=""></a>
+            <h2 class="h2">Sedentary alarm and auto sleep tracking</h2>
+            <p class="text">Scientific research shows that it's not just the intensity of activity which is important to health, frequency is also a factor. Sitting for too long has been shown to potentially contribute to significant health issues. Make sure you don't lose track of your sitting time with the in-built sedentary alarm: your smartwatch will notify you when you've been inactive for a long period of time, letting you know when it's time to take a break from the screen and stretch your legs! In addition, automatic sleep tracking makes sure you're aware of whether you're getting enough rest - essential as part of any healthy lifestyle.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_6.jpg" alt=""></a>
+            <h2 class="h2">Automatic notifications and reminders</h2>
+            <p class="text">A barrier to fitness for many people is remembering to fit in sufficient exercise: the automatic notification feature on the wristband will generate texts or other alerts to let you know when it's time to prioritize your fitness! A great way of helping you stay on track, alerts can be customized to suit your particular schedule.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_7.jpg" alt=""></a>
+            <h2 class="h2">Waterproof, hardwearing design</h2>
+            <p class="text">Even if you're not engaged in outdoor pursuits or other high-risk activities, it's still important that a fitness tracker is practical enough to withstand life at the gym, out on the road, at work or during leisure activities. The <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> features a tough, durable construction and is waterproof enough for use during rain or whilst at the gym. Note that the device isn't totally waterproof: no showering or swimming whilst wearing your activity tracker!</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_8.jpg" alt=""></a>
+            <h2 class="h2">Integral USB Plug</h2>
+            <p class="text">Like any other device, the tracker needs periodic charging to keep it working well. Unlike some other devices, which require a lead, this tracker comes with an integral USB plug. This means it can be conveniently plugged into a laptop or similar, without the need to also carry a lead for it.</p>
+            <a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_9.jpg" alt=""></a>
+            <h2 class="h2">Who is the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8 Fitness Tracker</a> suitable for?</h2>
+            <p class="text mb-0">Anybody who is interested in maintaining their health & well-being is going to find this activity tracker of benefit. Because it can be customized to suit individual needs, it's as relevant to performance athletes seeking to push their limits as it is to people who simply want to make sure that they're optimizing their health through moderate, regular activity. A good option for people who want to monitor progress towards fitness goals, fitness tracker is a great addition to any fitness or health routine.</p>
+            <div class="row text-center">
+              <div class="col-sm-4"><a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_10.jpg" alt=""></a></div>
+              <div class="col-sm-4"><a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_11.jpg" alt=""></a></div>
+              <div class="col-sm-4"><a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive img_radius mt-50 mb-50" src="./img/content_img_12.jpg" alt=""></a></div>
+            </div>
+            <h2 class="h2">Choose the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8 tracker</a> and see the difference it makes</h2>
+            <p class="text">Many people are surprised by their activity levels (or lack of) once they start using a reliable tracking device to capture data continuously. If you're ready to take control of your fitness (or would like to gift the tracker to someone else to help them on their wellness journey), then the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> fitness tracker could be an excellent investment. Order your tracker now to start seeing the benefits.</p>
+            <div class="ultra_boost">
+              <div class="ultra_boost_title">Where can I purchase the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a>?</div>
+              <p class="text mb-0"><a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> is available for a limited time only, with exclusive offers and free shipping.</p>
+              <div class="text mb-0"><span class="wrapper_red">Ordering is quick and easy</span>, so take advantage of the great price by ordering yours today.</div>
+            </div>
+            <div class="wrapper_ofer">
+              <div class="offer">
+                <div class="row d-flex align-items-center">
+                  <div class="col-md-4 text_offer">Special Offer:</div>
+                  <div class="col-md-4 center_block">
+                    <span class="fw-700 mr-10 fs-36 color-blue">$89</span>
+                    <span class="fs-16 line-through ml-10 mt-3 mr-10"> $178</span>
+                  </div>
+                  <div class="col-md-4"><span class="right_text_offer">available online only and while supplies last.</span> </div>
+                </div>
+              </div>
+              <a target="_blank" href="<?php echo $order_url; ?>" class="btn btn-red btn-red-dop">Get yours now <span class="fw-700">with 50% discount</span> and <span class="fw-700">free shipping worldwide!</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 pl-20">
+          <div class="wrapper-right-block">
+            <div id="aside1" class="">
+              <div class="right-block">
+                <div class="close">X</div>
+                <div class="wrapper_right-img"><a target="_blank" href="<?php echo $order_url; ?>"><img class="img-responsive right-img" src="./img/right-img.jpg" alt=""></a></div>
+                <div class="inner-right_block">
+                  <h3 class="fs-21 mt-0 lh-14">How can I buy the <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a>?</h3>
+                  <p class="text">The <a target="_blank" href="<?php echo $order_url; ?>">ActiV8</a> is available from the official website and for the Best Price!</p>
+                  <a target="_blank" href="<?php echo $order_url; ?>" class="btn btn-red pulse">
+                    <span class="ring"></span><span class="circle"></span>Сheck availability
+                  </a>
+                </div>
+                <div class="valid_block"><img src="./img/valid.png"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flouting btn-pulse">
+            <span class="ring"></span>
+            <span class="circle"></span>
+            <i class="demo-icon icon-basket color-light-blue"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /Home Section -->
+
+  <footer id="footer">
+    <div class="top_footer">
+      <div class="container">
+        <div class="wrapper_logo_footer">
+          <a target="_blank" href="<?php echo $order_url; ?>"><img src="./img/logo.png"></a>
+        </div>
+        <div class="wrapper_nav">
+          <ul class="nav navbar-nav">
+            <li class="active"><a target="_blank" href="<?php echo $order_url; ?>">Home</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/contact-us.php?prod=<?php echo $product; ?>">Contact</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/policy.php?prod=<?php echo $product; ?>">Privacy Policy</a></li>
+            <li><a target="_blank" href="<?php echo $main_url; ?>/legal/term.php?prod=<?php echo $product; ?>">Terms of Business</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">Copyright &copy; 2012 - <?php echo date('Y'); ?></div>
+    </div>
+  </footer>
+
+  <a id="totop" href="#totop"><i class="demo-icon icon-angle-up"></i></a>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Javascripts      ================================================== -->
+  <script src="./js/main.js"></script>
+  <script src="./js/jquery.social.sharing.js"></script>
+  <script>
+    (function(){
+      var a = document.querySelector('#aside1'), b = null, P = 0;  // если ноль заменить на число, то блок будет прилипать до того, как верхний край окна браузера дойдёт до верхнего края элемента. Может быть отрицательным числом
+      window.addEventListener('load', Ascroll, false);
+      window.addEventListener('resize', Ascroll, false);
+      window.addEventListener('scroll', Ascroll, false);
+      document.body.addEventListener('load', Ascroll, false);
+      document.body.addEventListener('resize', Ascroll, false);
+      document.body.addEventListener('scroll', Ascroll, false);
+      function Ascroll() {
+        if (b == null) {
+          var Sa = getComputedStyle(a, ''), s = '';
+          for (var i = 0; i < Sa.length; i++) {
+            if (Sa[i].indexOf('overflow') == 0 || Sa[i].indexOf('padding') == 0 || Sa[i].indexOf('border') == 0 || Sa[i].indexOf('outline') == 0 || Sa[i].indexOf('box-shadow') == 0 || Sa[i].indexOf('background') == 0) {
+              s += Sa[i] + ': ' +Sa.getPropertyValue(Sa[i]) + '; '
+            }
+          }
+          b = document.createElement('div');
+          var text_offsetWidth = (a.offsetWidth == 0)?'auto':a.offsetWidth + 'px;'
+          b.style.cssText = s + ' box-sizing: border-box; width: ' + text_offsetWidth;
+          a.insertBefore(b, a.firstChild);
+          var l = a.childNodes.length;
+          for (var i = 1; i < l; i++) {
+            b.appendChild(a.childNodes[1]);
+          }
+          a.style.height = b.getBoundingClientRect().height + 'px';
+          a.style.padding = '0';
+          a.style.border = '0';
+        }
+        var Ra = a.getBoundingClientRect(),
+        R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector('footer').getBoundingClientRect().top + 0);  // селектор блока, при достижении верхнего края которого нужно открепить прилипающий элемент;  Math.round() только для IE; если ноль заменить на число, то блок будет прилипать до того, как нижний край элемента дойдёт до футера
+        if ((Ra.top - P) <= 0) {
+          if ((Ra.top - P) <= R) {
+            b.className = 'stop';
+            b.style.top = - R +'px';
+          } else {
+            b.className = 'sticky';
+            b.style.top = P + 'px';
+          }
+        } else {
+          b.className = '';
+          b.style.top = '';
+        }
+        window.addEventListener('resize', function() {
+          a.children[0].style.width = getComputedStyle(a, '').width
+        }, false);
+      }
+    })()
+  </script>
+</body>
+</html>
